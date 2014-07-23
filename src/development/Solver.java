@@ -33,7 +33,8 @@ public class Solver {
 				else if (appliedResult > 9) {
 					// go back algorithm
 					if (columnIndex != 0) {
-						columnIndex--;
+						grid.getCell(rowIndex, columnIndex).apply(0);
+						columnIndex -= 2;
 
 					} else if (rowIndex != 0) {
 						rowIndex--;
@@ -71,10 +72,7 @@ public class Solver {
 
 	private int applyValueTo(Cell cell) {
 		int seed = cell.value + 1;
-		if (seed < getSize()) {
-			return cell.apply(seed);
-		}
-		return 0;
+		return cell.apply(seed);
 	}
 
 	private int getSize() {
